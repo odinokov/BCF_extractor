@@ -13,3 +13,4 @@ for(i in 1:length(file.names)){
   x <- paste("bcftools view -S subset.txt --force-samples ", file.names[i], " > ./", subDir ,"/output_", file_path_sans_ext(file.names[i]),".vcf", sep="")
   system(x)
 } 
+# system("cd ./output && find . -name '*.vcf' | parallel bgzip && ls | grep -E '\.gz$' | parallel bcftools index {} && bcftools merge --force-samples *vcf.gz > combined_genotypes.vcf")
